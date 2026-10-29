@@ -1,10 +1,9 @@
 {
-  "name": "Two of Us – Couple Game",
+  "name": "Two of Us – Duo Game",
   "short_name": "Two of Us",
-  "description": "Ein kleines Couple-Game für zwei.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#fffaf5",
   "theme_color": "#111735",
-  "icons": []
+  "lang": "de"
 }
