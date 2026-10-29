@@ -78,6 +78,24 @@ body.dark .choice-card.teal{background:linear-gradient(155deg,#1e4947,#203a43);c
 .choice-card small{display:block;font-size:12px;line-height:1.4;margin-top:7px}
 .choice-note{font-size:11px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.4}
 .mode-choice .grid{gap:12px}
+/* Sequential, calm welcome reveal: everything starts visually empty */
+.intro-unit{opacity:0;visibility:hidden}
+.intro-unit.intro-visible{opacity:1;visibility:visible}
+.welcome-brand{min-height:42px}
+.welcome-message p{white-space:pre-line;min-height:3em}
+.welcome-heart{opacity:0;visibility:hidden;transform:scale(.65)}
+.welcome-heart.intro-visible{animation:softPop .7s cubic-bezier(.2,.8,.25,1.12) both;opacity:1;visibility:visible}
+.welcome-toggle{opacity:0;visibility:hidden;transform:scale(.8)}
+.welcome-toggle.intro-visible{animation:togglePop .65s ease-out both;opacity:1;visibility:visible}
+.mode-choice .eyebrow,.mode-choice .headline,.mode-choice .sub,.choice-note{min-height:1.3em}
+.choice-card{opacity:0;visibility:hidden}
+.choice-card.couple-in{visibility:visible;animation:cardFromLeft 2.15s cubic-bezier(.2,.8,.25,1) forwards}
+.choice-card.friend-in{visibility:visible;animation:cardFromRight 2.15s cubic-bezier(.2,.8,.25,1) forwards}
+.choice-card.revealed{opacity:1;visibility:visible;transform:none;animation:none}
+@keyframes softPop{0%{opacity:0;transform:scale(.7)}70%{opacity:1;transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes togglePop{0%{opacity:0;transform:scale(.75)}100%{opacity:1;transform:scale(1)}}
+@keyframes cardFromLeft{0%{opacity:0;transform:translateX(-58px) scale(.92)}72%{opacity:1;transform:translateX(4px) scale(1.015)}100%{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes cardFromRight{0%{opacity:0;transform:translateX(58px) scale(.92)}72%{opacity:1;transform:translateX(-4px) scale(1.015)}100%{opacity:1;transform:translateX(0) scale(1)}}
 @media(max-width:360px){.choice-card{min-height:220px;padding:14px 9px}.welcome-message{min-height:190px;margin-top:14px}.welcome-message h1{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.welcome-title-pop,.type-caret,.choice-card.couple-in,.choice-card.friend-in{animation:none}.welcome-title-pop{opacity:1;transform:none}.choice-card{opacity:1;transform:none}}
 @media(min-width:600px){body{padding:22px 0}.app{border-radius:28px;overflow:hidden;min-height:850px}.nav{bottom:22px;border-radius:0 0 28px 28px}}
@@ -87,27 +105,27 @@ body.dark .choice-card.teal{background:linear-gradient(155deg,#1e4947,#203a43);c
 <div class="app" id="appShell">
 <header class="top"><div class="brand">TWO <span>OF</span> US <span>♡</span></div><div style="display:flex;gap:8px"><button class="round" aria-label="Dark Mode umschalten" onclick="toggleTheme()" id="themeToggle">☾</button><button class="round" aria-label="Info" onclick="showInfo()">i</button></div></header>
 <section id="welcomeScreen" class="welcome-screen" onclick="if(!event.target.closest('button'))advanceWelcomeAnimation()">
-  <button class="round welcome-toggle" aria-label="Dark Mode umschalten" onclick="toggleTheme()" id="welcomeThemeToggle">☾</button>
-  <div class="welcome-brand">Two <span>♥</span> of Us</div>
+  <button class="round welcome-toggle intro-unit" aria-label="Dark Mode umschalten" onclick="toggleTheme()" id="welcomeThemeToggle">☾</button>
+  <div class="welcome-brand intro-unit" id="welcomeBrand"><span id="brandTypewriter"></span></div>
   <div class="welcome-message" id="welcomeMessage">
-    <div class="welcome-heart">♥</div>
-    <h1 id="welcomeTitle"><span id="typewriter"></span><span class="type-caret" id="introCaret"></span></h1>
-    <p>Ein Duo. Zwei Spielende.<br>Jede Menge gemeinsame Momente.</p>
+    <div class="welcome-heart intro-unit" id="welcomeHeart">♥</div>
+    <h1 id="welcomeTitle" class="intro-unit"><span id="typewriter"></span><span class="type-caret" id="introCaret"></span></h1>
+    <p class="intro-unit" id="welcomeCopy"></p>
   </div>
-  <div class="welcome-hint" id="welcomeHint">Tippe, um den aktuellen Schritt zu überspringen</div>
+  <div class="welcome-hint intro-unit" id="welcomeHint"></div>
   <main>
   <section id="modeChoice" class="mode-choice">
-    <div class="eyebrow">TWO OF US · DUO GAME</div><h1 class="headline">Wie spielt ihr heute?</h1><p class="sub">Zu zweit macht alles mehr Spaß. Wählt euren Vibe.</p>
+    <div class="eyebrow intro-unit" id="modeEyebrow"></div><h1 class="headline intro-unit" id="modeHeading"></h1><p class="sub intro-unit" id="modeSub"></p>
     <div class="grid">
       <button class="choice-card pink" id="coupleChoice" onclick="chooseMode('couple')">
         <span class="choice-icon" aria-hidden="true"><span class="heart-cluster"><span class="heart-big">♥</span><span class="heart-small-a">♥</span><span class="heart-small-b">♥</span></span></span>
-        <span><strong>Couple Mode</strong><small>Für Paare</small></span>
+        <span><strong class="intro-unit" id="coupleLabel"></strong><small class="intro-unit" id="coupleSub"></small></span>
       </button>
       <button class="choice-card teal" id="friendChoice" onclick="chooseMode('friend')">
         <span class="choice-icon" aria-hidden="true"><span class="fist-bump">👊🏻👊🏽</span></span>
-        <span><strong>Friend Mode</strong><small>Für Freunde</small></span>
+        <span><strong class="intro-unit" id="friendLabel"></strong><small class="intro-unit" id="friendSub"></small></span>
       </button>
-    </div><p class="choice-note">Mehrspieler-Modus für größere Gruppen kommt vielleicht später ✨</p>
+    </div><p class="choice-note intro-unit" id="choiceNote"></p>
   </section>
   </main>
 </section>
@@ -170,30 +188,41 @@ awards:{label:"DUO AWARDS",title:"Zeit für eure Awards!",sub:"Wählt aus, wer d
 };
 let mode="questions",idx=0,played=0,answers=[],chosenMode=null,introDone=false,typeTimer=null,stepTimer=null,introPhase=0,typingInterval=null;
 const introText="Hallo ihr zwei!";
+const introStages=[
+  {id:"welcomeBrand",target:"brandTypewriter",text:"Two ♥ of Us",speed:85,delay:250},
+  {id:"welcomeTitle",target:"typewriter",text:introText,speed:320,delay:300},
+  {id:"welcomeToggle",text:"",delay:220},
+  {id:"welcomeHeart",text:"",delay:220},
+  {id:"welcomeCopy",text:"Ein Duo. Zwei Spielende.\nJede Menge gemeinsame Momente.",speed:48,delay:180},
+  {id:"welcomeHint",text:"Tippe, um den nächsten Schritt zu zeigen",speed:34,delay:220},
+  {id:"modeEyebrow",text:"TWO OF US · DUO GAME",speed:38,delay:180},
+  {id:"modeHeading",text:"Wie spielt ihr heute?",speed:95,delay:250},
+  {id:"modeSub",text:"Zu zweit macht alles mehr Spaß. Wählt euren Vibe.",speed:38,delay:250},
+  {id:"coupleChoice",card:"couple",delay:2200},
+  {id:"coupleLabel",target:"coupleLabel",text:"Couple Mode",speed:105,delay:180},
+  {id:"coupleSub",target:"coupleSub",text:"Für Paare",speed:75,delay:250},
+  {id:"friendChoice",card:"friend",delay:2200},
+  {id:"friendLabel",target:"friendLabel",text:"Friend Mode",speed:105,delay:180},
+  {id:"friendSub",target:"friendSub",text:"Für Freunde",speed:75,delay:250},
+  {id:"choiceNote",text:"Mehrspieler-Modus für größere Gruppen kommt vielleicht später ✨",speed:34,delay:150}
+];
 function clearIntroTimers(){clearTimeout(typeTimer);clearTimeout(stepTimer);clearInterval(typingInterval)}
-function beginIntro(){
-  const target=document.getElementById("typewriter"),title=document.getElementById("welcomeTitle");
-  title.classList.add("welcome-title-pop");
-  let i=0; introPhase=0;
-  typeTimer=setTimeout(()=>{
-    typingInterval=setInterval(()=>{
-      if(introDone){clearInterval(typingInterval);return}
-      if(i<introText.length){target.textContent+=introText.charAt(i++);}
-      else {clearInterval(typingInterval);document.getElementById("introCaret").style.display="none";introPhase=1;stepTimer=setTimeout(showCoupleCard,1450);}
-    },105);
-  },480);
-}
-function showCoupleCard(){if(introDone)return;introPhase=2;const card=document.getElementById("coupleChoice");card.classList.remove("hidden");card.classList.add("couple-in");document.getElementById("welcomeHint").textContent="Tippe, um den nächsten Schritt zu zeigen";stepTimer=setTimeout(showFriendCard,1450)}
-function showFriendCard(){if(introDone)return;introPhase=3;const card=document.getElementById("friendChoice");card.classList.remove("hidden");card.classList.add("friend-in");stepTimer=setTimeout(()=>{introPhase=4;document.getElementById("welcomeHint").textContent="Wählt euren Modus ✨"},850)}
-function advanceWelcomeAnimation(){
+function revealStage(index, instant=false){
   if(introDone)return;
   clearIntroTimers();
-  if(introPhase===0){document.getElementById("typewriter").textContent=introText;document.getElementById("introCaret").style.display="none";document.getElementById("welcomeTitle").classList.add("welcome-title-pop");introPhase=1;document.getElementById("welcomeHint").textContent="Tippe erneut, um die Modus-Kacheln zu zeigen";stepTimer=setTimeout(showCoupleCard,1450);return;}
-  if(introPhase===1){showCoupleCard();return;}
-  if(introPhase===2){showFriendCard();return;}
-  if(introPhase===3){const card=document.getElementById("friendChoice");card.classList.remove("friend-in");card.classList.add("revealed");introPhase=4;document.getElementById("welcomeHint").textContent="Wählt euren Modus ✨";return;}
-  if(introPhase===4){return;}
+  if(index>=introStages.length){introPhase=introStages.length;document.getElementById("welcomeHint").textContent="Wählt euren Modus ✨";return;}
+  introPhase=index;
+  const stage=introStages[index],el=document.getElementById(stage.id);
+  if(stage.card){el.classList.remove("hidden","couple-in","friend-in","revealed");el.classList.add(stage.card==="couple"?"couple-in":"friend-in");stepTimer=setTimeout(()=>revealStage(index+1),stage.delay);return;}
+  el.classList.add("intro-visible");
+  if(stage.id==="welcomeTitle")el.classList.add("welcome-title-pop");
+  if(stage.id==="welcomeHint")el.textContent="Tippe, um den nächsten Schritt zu zeigen";
+  if(stage.target){const target=document.getElementById(stage.target);target.textContent="";let i=0;const typeNext=()=>{if(introDone)return;if(i<stage.text.length){target.textContent+=stage.text.charAt(i++);typeTimer=setTimeout(typeNext,stage.speed||45);}else{if(stage.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}};if(instant){target.textContent=stage.text;if(stage.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}else typeTimer=setTimeout(typeNext,90);return;}
+  if(stage.text){el.textContent="";let i=0;const typeNext=()=>{if(introDone)return;if(i<stage.text.length){el.textContent+=stage.text.charAt(i++);typeTimer=setTimeout(typeNext,stage.speed||45);}else stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);};if(instant){el.textContent=stage.text;stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}else typeTimer=setTimeout(typeNext,60);return;}
+  stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);
 }
+function beginIntro(){document.getElementById("introCaret").style.display="inline-block";introStages.forEach(stage=>{const el=document.getElementById(stage.id);if(el){el.classList.remove("intro-visible","welcome-title-pop","couple-in","friend-in","revealed");if(stage.card)el.classList.add("hidden");}});document.getElementById("typewriter").textContent="";document.getElementById("brandTypewriter").textContent="";document.getElementById("welcomeCopy").textContent="";document.getElementById("welcomeHint").textContent="";document.getElementById("modeEyebrow").textContent="";document.getElementById("modeHeading").textContent="";document.getElementById("modeSub").textContent="";document.getElementById("choiceNote").textContent="";document.getElementById("coupleLabel").textContent="";document.getElementById("coupleSub").textContent="";document.getElementById("friendLabel").textContent="";document.getElementById("friendSub").textContent="";introDone=false;introPhase=-1;stepTimer=setTimeout(()=>revealStage(0),350);}
+function advanceWelcomeAnimation(){if(introDone)return;clearIntroTimers();let next=introPhase+1;if(introPhase<0)next=0;const current=introStages[introPhase];if(current&&current.target){const target=document.getElementById(current.target);target.textContent=current.text;if(current.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";}else if(current&&current.text){document.getElementById(current.id).textContent=current.text;}else if(current&&current.card){const el=document.getElementById(current.id);el.classList.remove("couple-in","friend-in");el.classList.add("revealed");}revealStage(next);}
 function skipWelcomeAnimation(){advanceWelcomeAnimation()}
 function chooseMode(which){chosenMode=which;hideAll();document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active");const friend=which==="friend";document.getElementById("homeEyebrow").textContent=friend?"Euer Buddy-Modus":"Euer kleines Wir";document.getElementById("homeHeadline").textContent=friend?"Hallo, ihr zwei! ✨":"Hallo, ihr Zwei! ✨";document.getElementById("homeSub").textContent=friend?"Bereit für gute Fragen, Insider und ein bisschen Chaos?":"Bereit für gute Fragen, ehrliche Antworten und ein bisschen Chaos?";document.querySelector(".hero .pill").textContent=friend?"✦ ZUSAMMEN SPIELEN":"✦ GEMEINSAM SPIELEN";document.querySelector(".hero h2").textContent=friend?"Zwei Buddys. Eine Menge Stories.":"Ein Spiel. Zwei Perspektiven.";document.querySelector(".hero p").textContent=friend?"Testet euer Wissen übereinander und findet heraus, wer wen am besten kennt.":"Findet heraus, wie gut ihr euch kennt – und worüber ihr noch lachen könnt.";document.querySelectorAll(".mode strong")[0].textContent=friend?"Duo Questions":"Couple Questions";document.querySelectorAll(".mode strong")[3].textContent=friend?"Duo Awards":"Couple Awards";}
 function toggleTheme(){const dark=document.body.classList.toggle("dark");document.getElementById("themeToggle").textContent=dark?"☀":"☾";document.getElementById("welcomeThemeToggle").textContent=dark?"☀":"☾";document.getElementById("themeColor").setAttribute("content",dark?"#17172a":"#111735");try{localStorage.setItem("twoOfUsTheme",dark?"dark":"light")}catch(e){}}
