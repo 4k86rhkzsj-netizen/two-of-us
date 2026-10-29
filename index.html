@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111735">
+<meta name="description" content="Two of Us – das Couple Game für zwei.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Two of Us – Couple Game</title>
+<style>
+:root{--navy:#111735;--pink:#ff347d;--purple:#7450f5;--teal:#11b7aa;--yellow:#ffc43d;--cream:#fffaf5;--ink:#18203d;--muted:#6e7186;--line:#eee8e5}
+*{box-sizing:border-box}body{margin:0;background:#f5f2f1;color:var(--ink);font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,sans-serif}
+button{font:inherit;cursor:pointer;border:0} .app{max-width:480px;min-height:100dvh;margin:auto;background:var(--cream);box-shadow:0 0 40px #11173510;position:relative;padding-bottom:86px}
+.top{padding:25px 22px 15px;display:flex;justify-content:space-between;align-items:center}.brand{font-size:13px;font-weight:900;letter-spacing:2px;color:var(--navy)}.brand span{color:var(--pink)}.round{background:#f2edf0;border-radius:50%;width:38px;height:38px;font-size:18px}
+main{padding:0 18px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink);margin:12px 0 8px}.headline{font-size:29px;line-height:1.08;letter-spacing:-1px;margin:0 0 7px;font-weight:850}.sub{font-size:14px;color:var(--muted);line-height:1.45;margin:0 0 20px}
+.hero{background:var(--navy);color:white;border-radius:25px;padding:20px;position:relative;overflow:hidden;margin-bottom:19px}.hero:after{content:"♡";position:absolute;font-size:110px;right:4px;top:-28px;color:#ffffff10;transform:rotate(12deg)}.hero small{color:#bfc7e7;font-weight:700}.hero h2{font-size:23px;line-height:1.15;margin:8px 0}.hero p{font-size:13px;color:#e1e4f5;max-width:245px;line-height:1.45}.pill{display:inline-flex;padding:7px 10px;border-radius:20px;background:#ffffff18;color:#fff;font-size:11px;font-weight:800;margin-bottom:8px}.primary{border-radius:16px;padding:13px 17px;background:var(--pink);color:white;font-weight:850;box-shadow:0 5px 0 #c91f5c;transition:.15s}.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #c91f5c}.hero .primary{background:#fff;color:var(--navy);box-shadow:none;margin-top:4px}
+.section-title{display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:850;margin:20px 2px 12px}.section-title small{font-size:12px;color:var(--muted);font-weight:650}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mode{min-height:150px;text-align:left;border-radius:22px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;color:#151b39;position:relative;overflow:hidden}.mode .symbol{font-size:27px;width:45px;height:45px;border-radius:15px;display:grid;place-items:center;background:#ffffffb8}.mode strong{font-size:16px;line-height:1.12;display:block;margin-top:13px}.mode small{display:block;font-size:11px;line-height:1.35;margin-top:6px;opacity:.83}.mode .arrow{position:absolute;right:13px;top:13px;font-size:18px;font-weight:900}.pink{background:#ff4d8c;color:#fff}.purple{background:#8060f7;color:#fff}.teal{background:#51d3c5}.yellow{background:#ffd15c}.pink .symbol,.purple .symbol{background:#ffffff28}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.chip{padding:9px 12px;border-radius:30px;background:#f0edf1;color:#4d5269;font-size:12px;font-weight:750}.chip.active{background:var(--navy);color:white}
+.card{background:white;border:1px solid var(--line);border-radius:23px;padding:20px;box-shadow:0 7px 18px #20204008}.question{font-family:Georgia,serif;font-size:25px;line-height:1.25;text-align:center;margin:22px 0}.answer{width:100%;padding:16px;text-align:left;border:1.5px solid var(--line);background:white;border-radius:15px;margin:6px 0;font-weight:750;color:var(--ink)}.answer.selected{border-color:var(--pink);background:#fff0f5}.answer:focus-visible,button:focus-visible{outline:3px solid #111735;outline-offset:3px}.actions{display:flex;gap:10px;margin-top:17px}.actions>*{flex:1}.ghost{background:#f0edf1;border-radius:15px;padding:13px;font-weight:800;color:var(--ink)}
+.progress{height:6px;background:#ebe8ee;border-radius:8px;overflow:hidden;margin:16px 0}.progress span{display:block;height:100%;background:var(--pink);width:25%;transition:width .2s}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);padding:10px 13px calc(10px + env(safe-area-inset-bottom));background:#fffefcf2;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:5}.nav button{background:transparent;color:#777b8d;font-size:11px;font-weight:750;padding:6px 0}.nav button span{display:block;font-size:20px;margin-bottom:3px}.nav button.active{color:var(--pink)}
+.hidden{display:none!important}.back{background:transparent;color:var(--ink);font-size:14px;font-weight:800;padding:6px 0}.center{text-align:center}.big-emoji{font-size:56px;margin:16px}.result-number{font-size:54px;font-weight:900;letter-spacing:-2px;color:var(--pink)}.toast{color:var(--muted);font-size:12px;text-align:center;margin-top:12px}.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.category{border-radius:17px;padding:16px 12px;text-align:left;font-weight:850;min-height:85px}.category span{display:block;font-size:25px;margin-bottom:7px}
+@media(min-width:600px){body{padding:22px 0}.app{border-radius:28px;overflow:hidden;min-height:850px}.nav{bottom:22px;border-radius:0 0 28px 28px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand">TWO <span>OF</span> US <span>♡</span></div><button class="round" aria-label="Info" onclick="showInfo()">i</button></header>
+<main>
+<section id="home">
+<div class="eyebrow">Euer kleines Wir</div><h1 class="headline">Hallo, ihr Zwei! ✨</h1><p class="sub">Bereit für gute Fragen, ehrliche Antworten und ein bisschen Chaos?</p>
+<div class="hero"><span class="pill">✦ GEMEINSAM SPIELEN</span><h2>Ein Spiel. Zwei Perspektiven.</h2><p>Findet heraus, wie gut ihr euch kennt – und worüber ihr noch lachen könnt.</p><button class="primary" onclick="startMode('questions')">Los geht's&nbsp; →</button></div>
+<div class="section-title">Wählt euren Spielmodus <small>4 Spiele</small></div>
+<div class="grid">
+<button class="mode pink" onclick="startMode('questions')"><span class="arrow">↗</span><span class="symbol">♡</span><span><strong>Couple Questions</strong><small>Ehrlich. Tief. Lustig.</small></span></button>
+<button class="mode purple" onclick="startMode('likely')"><span class="arrow">↗</span><span class="symbol">ϟ</span><span><strong>Who Is More Likely?</strong><small>Wer würde eher …?</small></span></button>
+<button class="mode teal" onclick="startMode('know')"><span class="arrow">↗</span><span class="symbol">✦</span><span><strong>How Well Do You Know Me?</strong><small>Wie gut kennst du mich?</small></span></button>
+<button class="mode yellow" onclick="startMode('awards')"><span class="arrow">↗</span><span class="symbol">♛</span><span><strong>Couple Awards</strong><small>Die lustigsten Kategorien.</small></span></button>
+</div>
+<div class="section-title">Stimmung auswählen</div>
+<div class="chips"><button class="chip active" onclick="filterMood(this)">Alles</button><button class="chip" onclick="filterMood(this)">Funny</button><button class="chip" onclick="filterMood(this)">Deep Talk</button><button class="chip" onclick="filterMood(this)">Green Flags</button></div>
+</section>
+<section id="game" class="hidden">
+<button class="back" onclick="goHome()">← Zur Übersicht</button>
+<div class="eyebrow" id="gameLabel">COUPLE QUESTIONS</div><h1 class="headline" id="gameTitle">Zeit für eine Frage.</h1><p class="sub" id="gameSub">Antwortet spontan – es gibt kein Richtig oder Falsch.</p>
+<div class="progress"><span id="bar"></span></div><div class="card"><div class="center"><span class="pill" style="background:#fce2ed;color:#b91e5b" id="tag">DEEP TALK</span></div><div class="question" id="question">Was war dein erster Gedanke, als wir uns kennengelernt haben?</div><div id="answers"></div></div>
+<div class="actions"><button class="ghost" onclick="skipQuestion()">Überspringen</button><button class="primary" id="nextBtn" onclick="nextQuestion()">Weiter →</button></div><p class="toast" id="hint">💗 Gute Fragen. Große Gespräche.</p>
+</section>
+<section id="result" class="hidden center">
+<div class="big-emoji">🎉</div><div class="eyebrow">EUER ERGEBNIS</div><h1 class="headline">Ihr seid ein gutes Team!</h1><p class="sub">Das Wichtigste ist nicht, immer gleich zu antworten – sondern neugierig aufeinander zu bleiben.</p><div class="card"><div class="result-number" id="score">4/5</div><strong>Fragen gemeinsam gespielt</strong><p class="sub" style="margin:8px 0 0">Eure nächste Gesprächsrunde wartet schon.</p></div><button class="primary" style="width:100%;margin-top:18px" onclick="startMode('questions')">Nochmal spielen ↗</button><button class="ghost" style="width:100%;margin-top:10px" onclick="goHome()">Zur Startseite</button>
+</section>
+<section id="profile" class="hidden">
+<div class="eyebrow">EUER PROFIL</div><h1 class="headline">Team Wir ♡</h1><p class="sub">Eure gemeinsame Spielreise beginnt hier.</p><div class="card"><div class="big-emoji center">🫶</div><h2 class="center">Zwei Perspektiven, ein Team.</h2><p class="sub center">Spielt ein paar Runden, entdeckt eure Antworten und sammelt eure Lieblingsmomente.</p></div><div class="section-title">Bisherige Statistik</div><div class="grid"><div class="card center"><strong id="played">0</strong><p class="sub">Fragen gespielt</p></div><div class="card center"><strong>4</strong><p class="sub">Spielmodi</p></div></div>
+</section>
+<section id="info" class="hidden"><button class="back" onclick="goHome()">← Zurück</button><h1 class="headline">Über Two of Us</h1><p class="sub">Ein kleines Spiel für zwei Menschen, viele Fragen und gute Gespräche. Dies ist ein erster Prototyp – eure Antworten werden nicht online gespeichert.</p></section>
+</main>
+<nav class="nav"><button class="active" id="navHome" onclick="goHome()"><span>⌂</span>Home</button><button onclick="startMode('questions')"><span>♧</span>Spiele</button><button onclick="showResult()"><span>▥</span>Ergebnisse</button><button onclick="showProfile()"><span>♡</span>Profil</button></nav>
+</div>
+<script>
+const data={
+questions:{label:"COUPLE QUESTIONS",title:"Zeit für eine Frage.",sub:"Antwortet spontan – es gibt kein Richtig oder Falsch.",qs:[
+["Was war dein erster Gedanke, als wir uns kennengelernt haben?","Sofort sympathisch","Das muss ich herausfinden","Ich war nervös"],
+["Was ist dir in einer Beziehung besonders wichtig?","Vertrauen","Gemeinsame Zeit","Ehrlichkeit"],
+["Was wäre für dich ein perfekter gemeinsamer Tag?","Abenteuer erleben","Gemütlich zuhause","Etwas Neues ausprobieren"],
+["Welche kleine Sache macht dich sofort glücklich?","Eine liebe Nachricht","Eine Umarmung","Zusammen lachen"],
+["Was sollten wir unbedingt einmal zusammen machen?","Spontan verreisen","Etwas Neues lernen","Einen verrückten Tag planen"]]},
+likely:{label:"WHO IS MORE LIKELY?",title:"Wer würde eher …?",sub:"Tippt beide auf eine Person und vergleicht eure Wahl.",qs:[
+["Wer würde eher im Urlaub den Flug verpassen?",["Du","Ich"]],
+["Wer fängt eher grundlos an zu lachen?",["Du","Ich"]],
+["Wer würde eher einen Film zum dritten Mal schauen?",["Du","Ich"]],
+["Wer plant eher eine spontane Überraschung?",["Du","Ich"]],
+["Wer braucht morgens länger?",["Du","Ich"]]},
+know:{label:"HOW WELL DO YOU KNOW ME?",title:"Wie gut kennst du mich?",sub:"Eine Person beantwortet die Frage, die andere rät.",qs:[
+["Wie viel Geld müsste ich verdienen, damit ich mich finanziell wohlfühle?",["2.000 €","3.000 €","4.000 €","5.000 € oder mehr"]],
+["Was wäre mein Traum-Reiseziel?",["Japan","Italien","New York","Ein Strandparadies"]],
+["Was würde ich mir eher gönnen?",["Ein Erlebnis","Ein neues Gadget","Eine Reise","Einen gemütlichen Abend"]],
+["Was macht mich am schnellsten glücklich?",["Essen","Komplimente","Zeit zusammen","Ein freier Tag"]],
+["Wie verbringe ich am liebsten einen freien Sonntag?",["Unterwegs sein","Ausschlafen","Freunde treffen","Zuhause entspannen"]]},
+awards:{label:"COUPLE AWARDS",title:"Zeit für eure Awards!",sub:"Wählt aus, wer den Titel verdient.",qs:[
+["Wer ist der größere Chaos-Quatschkopf?",["Du","Ich"]],
+["Wer ist besser darin, Geheimnisse zu bewahren?",["Du","Ich"]],
+["Wer plant den besseren Date-Abend?",["Du","Ich"]],
+["Wer würde bei einem Spieleabend gewinnen?",["Du","Ich"]],
+["Wer bringt den anderen schneller zum Lachen?",["Du","Ich"]]}
+};
+let mode="questions",idx=0,played=0,answers=[];
+function hideAll(){["home","game","result","profile","info"].forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById("navHome").classList.remove("active")}
+function goHome(){hideAll();document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active")}
+function startMode(m){mode=m;idx=0;answers=[];hideAll();document.getElementById("game").classList.remove("hidden");renderQ()}
+function renderQ(){const d=data[mode],q=d.qs[idx];document.getElementById("gameLabel").textContent=d.label;document.getElementById("gameTitle").textContent=d.title;document.getElementById("gameSub").textContent=d.sub;document.getElementById("question").textContent=q[0];document.getElementById("tag").textContent=mode==="questions"?"DEEP TALK":mode==="likely"?"FUNNY":mode==="know"?"DEINE VORLIEBEN":"COUPLE AWARDS";document.getElementById("bar").style.width=((idx+1)/d.qs.length*100)+"%";document.getElementById("nextBtn").textContent=idx===d.qs.length-1?"Ergebnis ansehen →":"Weiter →";const wrap=document.getElementById("answers");wrap.innerHTML="";(q[1].length? q[1]:[]).forEach((a,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>{wrap.querySelectorAll(".answer").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");answers[idx]=a};wrap.appendChild(b)});document.getElementById("hint").textContent="Frage "+(idx+1)+" von "+d.qs.length+" · 💗 Bleibt neugierig aufeinander."}
+function nextQuestion(){played++;if(idx<data[mode].qs.length-1){idx++;renderQ()}else{showResult()}}
+function skipQuestion(){if(idx<data[mode].qs.length-1){idx++;renderQ()}else showResult()}
+function showResult(){hideAll();document.getElementById("result").classList.remove("hidden");document.getElementById("score").textContent=played+"/5";document.getElementById("played").textContent=played}
+function showProfile(){hideAll();document.getElementById("profile").classList.remove("hidden");document.getElementById("played").textContent=played}
+function showInfo(){hideAll();document.getElementById("info").classList.remove("hidden")}
+function filterMood(el){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));el.classList.add("active");const m=el.textContent;if(m==="Funny")startMode("likely");else if(m==="Deep Talk"||m==="Green Flags")startMode("questions");else goHome()}
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body></html>
