@@ -18,7 +18,7 @@ main{padding:0 18px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px
 .hero{background:var(--navy);color:white;border-radius:25px;padding:20px;position:relative;overflow:hidden;margin-bottom:19px}.hero:after{content:"♡";position:absolute;font-size:110px;right:4px;top:-28px;color:#ffffff10;transform:rotate(12deg)}.hero small{color:#bfc7e7;font-weight:700}.hero h2{font-size:23px;line-height:1.15;margin:8px 0}.hero p{font-size:13px;color:#e1e4f5;max-width:245px;line-height:1.45}.pill{display:inline-flex;padding:7px 10px;border-radius:20px;background:#ffffff18;color:#fff;font-size:11px;font-weight:800;margin-bottom:8px}.primary{border-radius:16px;padding:13px 17px;background:var(--pink);color:white;font-weight:850;box-shadow:0 5px 0 #c91f5c;transition:.15s}.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #c91f5c}.hero .primary{background:#fff;color:var(--navy);box-shadow:none;margin-top:4px}
 .section-title{display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:850;margin:20px 2px 12px}.section-title small{font-size:12px;color:var(--muted);font-weight:650}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mode{min-height:150px;text-align:left;border-radius:22px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;color:#151b39;position:relative;overflow:hidden}.mode .symbol{font-size:27px;width:45px;height:45px;border-radius:15px;display:grid;place-items:center;background:#ffffffb8}.mode strong{font-size:16px;line-height:1.12;display:block;margin-top:13px}.mode small{display:block;font-size:11px;line-height:1.35;margin-top:6px;opacity:.83}.mode .arrow{position:absolute;right:13px;top:13px;font-size:18px;font-weight:900}.pink{background:#ff4d8c;color:#fff}.purple{background:#8060f7;color:#fff}.teal{background:#51d3c5}.yellow{background:#ffd15c}.pink .symbol,.purple .symbol{background:#ffffff28}
-.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.chip{padding:9px 12px;border-radius:30px;background:#f0edf1;color:#4d5269;font-size:12px;font-weight:750}.chip.active{background:var(--navy);color:white}
+.chips{display:flex;flex-wrap:wrap;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.chip{padding:9px 12px;border-radius:30px;background:#f0edf1;color:#4d5269;font-size:12px;font-weight:750}.chip.active{background:var(--navy);color:white}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:23px;padding:20px;box-shadow:0 7px 18px #20204008}.question{font-family:Georgia,serif;font-size:25px;line-height:1.25;text-align:center;margin:22px 0}.answer{width:100%;padding:16px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:15px;margin:6px 0;font-weight:750;color:var(--ink)}.answer.selected{border-color:var(--pink);background:#fff0f5}.answer:focus-visible,button:focus-visible{outline:3px solid #111735;outline-offset:3px}.actions{display:flex;gap:10px;margin-top:17px}.actions>*{flex:1}.ghost{background:#f0edf1;border-radius:15px;padding:13px;font-weight:800;color:var(--ink)}
 .progress{height:6px;background:#ebe8ee;border-radius:8px;overflow:hidden;margin:16px 0}.progress span{display:block;height:100%;background:var(--pink);width:25%;transition:width .2s}
 .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);padding:10px 13px calc(10px + env(safe-area-inset-bottom));background:var(--navsurface);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:5}.nav button{background:transparent;color:#777b8d;font-size:11px;font-weight:750;padding:6px 0}.nav button span{display:block;font-size:20px;margin-bottom:3px}.nav button.active{color:var(--pink)}
@@ -99,6 +99,20 @@ body.dark .choice-card.teal{background:linear-gradient(155deg,#1e4947,#203a43);c
 @media(max-width:360px){.choice-card{min-height:220px;padding:14px 9px}.welcome-message{min-height:190px;margin-top:14px}.welcome-message h1{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.welcome-title-pop,.type-caret,.choice-card.couple-in,.choice-card.friend-in{animation:none}.welcome-title-pop{opacity:1;transform:none}.choice-card{opacity:1;transform:none}}
 @media(min-width:600px){body{padding:22px 0}.app{border-radius:28px;overflow:hidden;min-height:850px}.nav{bottom:22px;border-radius:0 0 28px 28px}}
+
+.player-screen{padding:18px 0 100px}
+.player-screen .headline{text-align:center}
+.player-screen .sub{text-align:center}
+.player-panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;margin:14px 0}
+.player-panel h3{margin:0 0 10px;font-size:16px}
+.gender-row{display:flex;gap:8px;margin-bottom:12px}
+.gender-row button{flex:1;border:1px solid var(--line);border-radius:14px;padding:10px;background:var(--soft);color:var(--ink);font-weight:800}
+.gender-row button.active{background:var(--purple);color:white;border-color:var(--purple)}
+.avatar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.avatar-option{border:2px solid var(--line);border-radius:15px;background:var(--page);padding:9px 3px;color:var(--ink);font-size:28px;min-width:0}
+.avatar-option small{display:block;font-size:10px;margin-top:5px}
+.avatar-option.selected{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 13%,var(--surface))}
+.player-name{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--page);color:var(--ink);font:inherit;margin:8px 0}
 </style>
 </head>
 <body>
@@ -142,6 +156,15 @@ body.dark .choice-card.teal{background:linear-gradient(155deg,#1e4947,#203a43);c
 </div>
 <div class="section-title">Stimmung auswählen</div>
 <div class="chips"><button class="chip active" onclick="filterMood(this)">Alles</button><button class="chip" onclick="filterMood(this)">Funny</button><button class="chip" onclick="filterMood(this)">Deep Talk</button><button class="chip" onclick="filterMood(this)">Green Flags</button></div>
+</section>
+
+<section id="players" class="hidden player-screen">
+<button class="back" onclick="backToModeSelect()">← Zurück</button>
+<div class="eyebrow">EUER DUO</div><h1 class="headline">Wer spielt?</h1>
+<p class="sub">Erstellt eure Figuren. Wir merken uns eure Auswahl auf diesem Gerät.</p>
+<div class="player-panel"><h3>Spieler 1</h3><input id="player1Name" class="player-name" maxlength="18" placeholder="Name von Spieler 1"><div class="gender-row"><button id="p1f" class="active" onclick="setGender(1,'f')">♀ Frau</button><button id="p1m" onclick="setGender(1,'m')">♂ Mann</button></div><div id="avatarGrid1" class="avatar-grid"></div></div>
+<div class="player-panel"><h3>Spieler 2</h3><input id="player2Name" class="player-name" maxlength="18" placeholder="Name von Spieler 2"><div class="gender-row"><button id="p2f" class="active" onclick="setGender(2,'f')">♀ Frau</button><button id="p2m" onclick="setGender(2,'m')">♂ Mann</button></div><div id="avatarGrid2" class="avatar-grid"></div></div>
+<button class="primary" style="width:100%" onclick="savePlayersAndContinue()">Weiter zum Spiel →</button>
 </section>
 <section id="game" class="hidden">
 <button class="back" onclick="goHome()">← Zur Übersicht</button>
@@ -189,46 +212,62 @@ awards:{label:"DUO AWARDS",title:"Zeit für eure Awards!",sub:"Wählt aus, wer d
 let mode="questions",idx=0,played=0,answers=[],chosenMode=null,introDone=false,typeTimer=null,stepTimer=null,introPhase=0,typingInterval=null;
 const introText="Hallo ihr zwei!";
 const introStages=[
-  {id:"welcomeBrand",target:"brandTypewriter",text:"Two ♥ of Us",speed:85,delay:250},
-  {id:"welcomeTitle",target:"typewriter",text:introText,speed:320,delay:300},
-  {id:"welcomeToggle",text:"",delay:220},
-  {id:"welcomeHeart",text:"",delay:220},
-  {id:"welcomeCopy",text:"Ein Duo. Zwei Spielende.\nJede Menge gemeinsame Momente.",speed:48,delay:180},
-  {id:"welcomeHint",text:"Tippe, um den nächsten Schritt zu zeigen",speed:34,delay:220},
-  {id:"modeEyebrow",text:"TWO OF US · DUO GAME",speed:38,delay:180},
-  {id:"modeHeading",text:"Wie spielt ihr heute?",speed:95,delay:250},
-  {id:"modeSub",text:"Zu zweit macht alles mehr Spaß. Wählt euren Vibe.",speed:38,delay:250},
-  {id:"coupleChoice",card:"couple",delay:1200},
-  {id:"coupleLabel",target:"coupleLabel",text:"Couple Mode",speed:105,delay:180},
-  {id:"coupleSub",target:"coupleSub",text:"Für Paare",speed:75,delay:250},
-  {id:"friendChoice",card:"friend",delay:1200},
-  {id:"friendLabel",target:"friendLabel",text:"Friend Mode",speed:105,delay:180},
-  {id:"friendSub",target:"friendSub",text:"Für Freunde",speed:75,delay:250},
+  {id:"welcomeBrand",target:"brandTypewriter",text:"Two ♥ of Us",speed:85,delay:100},
+  {id:"welcomeTitle",target:"typewriter",text:introText,speed:190,delay:80},
+  {id:"welcomeToggle",text:"",delay:100},
+  {id:"welcomeHeart",text:"",delay:100},
+  {id:"welcomeCopy",text:"Ein Duo. Zwei Spielende.\nJede Menge gemeinsame Momente.",speed:48,delay:80},
+  
+  {id:"modeEyebrow",text:"TWO OF US · DUO GAME",speed:38,delay:80},
+  {id:"modeHeading",text:"Wie spielt ihr heute?",speed:95,delay:100},
+  {id:"modeSub",text:"Zu zweit macht alles mehr Spaß. Wählt euren Vibe.",speed:38,delay:100},
+  {id:"coupleChoice",card:"couple",delay:700},
+  {id:"coupleLabel",target:"coupleLabel",text:"Couple Mode",speed:105,delay:80},
+  {id:"coupleSub",target:"coupleSub",text:"Für Paare",speed:75,delay:100},
+  {id:"friendChoice",card:"friend",delay:700},
+  {id:"friendLabel",target:"friendLabel",text:"Friend Mode",speed:105,delay:80},
+  {id:"friendSub",target:"friendSub",text:"Für Freunde",speed:75,delay:100},
   {id:"choiceNote",text:"Mehrspieler-Modus für größere Gruppen kommt vielleicht später ✨",speed:34,delay:150}
 ];
 function clearIntroTimers(){clearTimeout(typeTimer);clearTimeout(stepTimer);clearInterval(typingInterval)}
 function revealStage(index, instant=false){
   if(introDone)return;
   clearIntroTimers();
-  if(index>=introStages.length){introPhase=introStages.length;document.getElementById("welcomeHint").textContent="Wählt euren Modus ✨";return;}
+  if(index>=introStages.length){introPhase=introStages.length;document.getElementById("welcomeHint").textContent="";return;}
   introPhase=index;
   const stage=introStages[index],el=document.getElementById(stage.id);
   if(stage.card){el.classList.remove("hidden","couple-in","friend-in","revealed");el.classList.add(stage.card==="couple"?"couple-in":"friend-in");stepTimer=setTimeout(()=>revealStage(index+1),stage.delay);return;}
   el.classList.add("intro-visible");
   if(stage.id==="welcomeTitle")el.classList.add("welcome-title-pop");
-  if(stage.id==="welcomeHint")el.textContent="Tippe, um den nächsten Schritt zu zeigen";
+  
   if(stage.target){const target=document.getElementById(stage.target);target.textContent="";let i=0;const typeNext=()=>{if(introDone)return;if(i<stage.text.length){target.textContent+=stage.text.charAt(i++);typeTimer=setTimeout(typeNext,stage.speed||45);}else{if(stage.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}};if(instant){target.textContent=stage.text;if(stage.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}else typeTimer=setTimeout(typeNext,90);return;}
   if(stage.text){el.textContent="";let i=0;const typeNext=()=>{if(introDone)return;if(i<stage.text.length){el.textContent+=stage.text.charAt(i++);typeTimer=setTimeout(typeNext,stage.speed||45);}else stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);};if(instant){el.textContent=stage.text;stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);}else typeTimer=setTimeout(typeNext,60);return;}
   stepTimer=setTimeout(()=>revealStage(index+1),stage.delay||150);
 }
 function beginIntro(){document.getElementById("introCaret").style.display="inline-block";introStages.forEach(stage=>{const el=document.getElementById(stage.id);if(el){el.classList.remove("intro-visible","welcome-title-pop","couple-in","friend-in","revealed");if(stage.card)el.classList.add("hidden");}});document.getElementById("typewriter").textContent="";document.getElementById("brandTypewriter").textContent="";document.getElementById("welcomeCopy").textContent="";document.getElementById("welcomeHint").textContent="";document.getElementById("modeEyebrow").textContent="";document.getElementById("modeHeading").textContent="";document.getElementById("modeSub").textContent="";document.getElementById("choiceNote").textContent="";document.getElementById("coupleLabel").textContent="";document.getElementById("coupleSub").textContent="";document.getElementById("friendLabel").textContent="";document.getElementById("friendSub").textContent="";introDone=false;introPhase=-1;stepTimer=setTimeout(()=>revealStage(0),350);}
-function advanceWelcomeAnimation(){if(introDone)return;clearIntroTimers();let next=introPhase+1;if(introPhase<0)next=0;const current=introStages[introPhase];if(current&&current.target){const target=document.getElementById(current.target);target.textContent=current.text;if(current.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";}else if(current&&current.text){document.getElementById(current.id).textContent=current.text;}else if(current&&current.card){const el=document.getElementById(current.id);el.classList.remove("couple-in","friend-in");el.classList.add("revealed");}revealStage(next);}
+function advanceWelcomeAnimation(){return; /* intro now plays automatically */ if(introDone)return;clearIntroTimers();let next=introPhase+1;if(introPhase<0)next=0;const current=introStages[introPhase];if(current&&current.target){const target=document.getElementById(current.target);target.textContent=current.text;if(current.id==="welcomeTitle")document.getElementById("introCaret").style.display="none";}else if(current&&current.text){document.getElementById(current.id).textContent=current.text;}else if(current&&current.card){const el=document.getElementById(current.id);el.classList.remove("couple-in","friend-in");el.classList.add("revealed");}revealStage(next);}
 function skipWelcomeAnimation(){advanceWelcomeAnimation()}
-function chooseMode(which){chosenMode=which;hideAll();document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active");const friend=which==="friend";document.getElementById("homeEyebrow").textContent=friend?"Euer Buddy-Modus":"Euer kleines Wir";document.getElementById("homeHeadline").textContent=friend?"Hallo, ihr zwei! ✨":"Hallo, ihr Zwei! ✨";document.getElementById("homeSub").textContent=friend?"Bereit für gute Fragen, Insider und ein bisschen Chaos?":"Bereit für gute Fragen, ehrliche Antworten und ein bisschen Chaos?";document.querySelector(".hero .pill").textContent=friend?"✦ ZUSAMMEN SPIELEN":"✦ GEMEINSAM SPIELEN";document.querySelector(".hero h2").textContent=friend?"Zwei Buddys. Eine Menge Stories.":"Ein Spiel. Zwei Perspektiven.";document.querySelector(".hero p").textContent=friend?"Testet euer Wissen übereinander und findet heraus, wer wen am besten kennt.":"Findet heraus, wie gut ihr euch kennt – und worüber ihr noch lachen könnt.";document.querySelectorAll(".mode strong")[0].textContent=friend?"Duo Questions":"Couple Questions";document.querySelectorAll(".mode strong")[3].textContent=friend?"Duo Awards":"Couple Awards";}
+function chooseMode(which){chosenMode=which;if(which==="couple"){showPlayers();return;}hideAll();document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active");const friend=which==="friend";document.getElementById("homeEyebrow").textContent=friend?"Euer Buddy-Modus":"Euer kleines Wir";document.getElementById("homeHeadline").textContent=friend?"Hallo, ihr zwei! ✨":"Hallo, ihr Zwei! ✨";document.getElementById("homeSub").textContent=friend?"Bereit für gute Fragen, Insider und ein bisschen Chaos?":"Bereit für gute Fragen, ehrliche Antworten und ein bisschen Chaos?";document.querySelector(".hero .pill").textContent=friend?"✦ ZUSAMMEN SPIELEN":"✦ GEMEINSAM SPIELEN";document.querySelector(".hero h2").textContent=friend?"Zwei Buddys. Eine Menge Stories.":"Ein Spiel. Zwei Perspektiven.";document.querySelector(".hero p").textContent=friend?"Testet euer Wissen übereinander und findet heraus, wer wen am besten kennt.":"Findet heraus, wie gut ihr euch kennt – und worüber ihr noch lachen könnt.";document.querySelectorAll(".mode strong")[0].textContent=friend?"Duo Questions":"Couple Questions";document.querySelectorAll(".mode strong")[3].textContent=friend?"Duo Awards":"Couple Awards";}
+
+const avatarSets={
+ f:["👩🏻","👩🏼","👩🏽","👩🏾","👩🏿","👩🏻‍🦱","👩🏽‍🦱","👩🏿‍🦱","👩🏼‍🦰","👩🏽‍🦰","👩🏻‍🦳","👩🏾‍🦰"],
+ m:["👨🏻","👨🏼","👨🏽","👨🏾","👨🏿","👨🏻‍🦱","👨🏽‍🦱","👨🏿‍🦱","👨🏼‍🦰","👨🏽‍🦰","👨🏻‍🦳","👨🏾‍🦰"]
+};
+let playerGender={1:"f",2:"f"},playerAvatar={1:0,2:1};
+function showPlayers(){
+ hideAll();document.getElementById("players").classList.remove("hidden");
+ try{const saved=JSON.parse(localStorage.getItem("twoOfUsPlayers")||"{}");[1,2].forEach(n=>{if(saved[n]){document.getElementById("player"+n+"Name").value=saved[n].name||"";playerGender[n]=saved[n].gender||"f";playerAvatar[n]=saved[n].avatar??(n-1);}})}catch(e){}
+ [1,2].forEach(n=>{setGender(n,playerGender[n],false);renderAvatars(n)});
+}
+function setGender(n,g,render=true){playerGender[n]=g;document.getElementById("p"+n+"f").classList.toggle("active",g==="f");document.getElementById("p"+n+"m").classList.toggle("active",g==="m");if(render)renderAvatars(n)}
+function renderAvatars(n){const grid=document.getElementById("avatarGrid"+n);if(!grid)return;grid.innerHTML="";avatarSets[playerGender[n]].forEach((avatar,i)=>{const b=document.createElement("button");b.className="avatar-option"+(playerAvatar[n]===i?" selected":"");b.innerHTML=avatar+"<small>Figur "+(i+1)+"</small>";b.onclick=()=>{playerAvatar[n]=i;renderAvatars(n)};grid.appendChild(b)})}
+function savePlayersAndContinue(){const players={};[1,2].forEach(n=>players[n]={name:document.getElementById("player"+n+"Name").value.trim()||("Spieler "+n),gender:playerGender[n],avatar:playerAvatar[n]});try{localStorage.setItem("twoOfUsPlayers",JSON.stringify(players))}catch(e){}hideAll();document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active");document.getElementById("homeEyebrow").textContent="Euer kleines Wir";document.getElementById("homeHeadline").textContent="Hallo, ihr Zwei! ✨";document.getElementById("homeSub").textContent="Bereit für gute Fragen, ehrliche Antworten und ein bisschen Chaos?";}
+function backToModeSelect(){hideAll();document.getElementById("welcomeScreen").classList.remove("hidden");}
+
 function toggleTheme(){const dark=document.body.classList.toggle("dark");document.getElementById("themeToggle").textContent=dark?"☀":"☾";document.getElementById("welcomeThemeToggle").textContent=dark?"☀":"☾";document.getElementById("themeColor").setAttribute("content",dark?"#17172a":"#111735");try{localStorage.setItem("twoOfUsTheme",dark?"dark":"light")}catch(e){}}
 function loadTheme(){let dark=false;try{dark=localStorage.getItem("twoOfUsTheme")==="dark"}catch(e){}if(dark){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀";document.getElementById("welcomeThemeToggle").textContent="☀";document.getElementById("themeColor").setAttribute("content","#17172a")}}
 
-function hideAll(){["welcomeScreen","home","game","result","profile","info"].forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById("navHome").classList.remove("active")}
+function hideAll(){["welcomeScreen","home","players","game","result","profile","info"].forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById("navHome").classList.remove("active")}
 function goHome(){hideAll();if(!chosenMode){document.getElementById("welcomeScreen").classList.remove("hidden")}else{document.getElementById("home").classList.remove("hidden");document.getElementById("navHome").classList.add("active")}}
 function startMode(m){mode=m;idx=0;answers=[];hideAll();document.getElementById("game").classList.remove("hidden");renderQ()}
 function renderQ(){const d=data[mode],q=d.qs[idx];document.getElementById("gameLabel").textContent=d.label;document.getElementById("gameTitle").textContent=d.title;document.getElementById("gameSub").textContent=d.sub;document.getElementById("question").textContent=q[0];document.getElementById("tag").textContent=mode==="questions"?"DEEP TALK":mode==="likely"?"FUNNY":mode==="know"?"DEINE VORLIEBEN":"COUPLE AWARDS";document.getElementById("bar").style.width=((idx+1)/d.qs.length*100)+"%";document.getElementById("nextBtn").textContent=idx===d.qs.length-1?"Ergebnis ansehen →":"Weiter →";const wrap=document.getElementById("answers");wrap.innerHTML="";(q[1].length? q[1]:[]).forEach((a,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>{wrap.querySelectorAll(".answer").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");answers[idx]=a};wrap.appendChild(b)});document.getElementById("hint").textContent="Frage "+(idx+1)+" von "+d.qs.length+" · 💗 Bleibt neugierig aufeinander."}
